@@ -1,0 +1,14 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: caching_proxy
+      POSTGRES_USER: caching_proxy
+      POSTGRES_PASSWORD: caching_proxy
+    ports:
+      - "5433:5433"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-data:
