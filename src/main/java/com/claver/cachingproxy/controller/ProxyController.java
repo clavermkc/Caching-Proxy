@@ -3,6 +3,8 @@ package com.claver.cachingproxy.controller;
 import com.claver.cachingproxy.dto.ProxyResponseDto;
 import com.claver.cachingproxy.service.ProxyService;
 import jakarta.servlet.http.HttpServletRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProxyController {
 
     private final ProxyService proxyService;
-
+    private final Logger logger = LoggerFactory.getLogger(ProxyController.class);
     public ProxyController(ProxyService proxyService) {
         this.proxyService = proxyService;
     }
@@ -36,7 +38,7 @@ public class ProxyController {
 
         // Ajouter l'en-tête X-Cache demandé par les spécifications de roadmap.sh
         responseHeaders.set("X-Cache", proxyResponse.cacheStatus());
-
+        logger.info("X-Cache:{}",proxyResponse.cacheStatus());
         return ResponseEntity.ok()
                 .headers(responseHeaders)
                 .body(proxyResponse.body());
