@@ -50,7 +50,7 @@ public class CachingProxyApplication {
 		}
 
 		try {
-			//Todo later use Restclient 
+			//Todo later use Restclient
 			HttpClient client = HttpClient.newHttpClient();
 			HttpRequest request = HttpRequest.newBuilder()
 					.uri(URI.create("http://localhost:" + port + "/internal/clear-cache"))
