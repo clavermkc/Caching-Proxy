@@ -91,6 +91,8 @@ The repeated request is served much faster from cache (34 ms in this capture):
 The application logs confirm the expected sequence: `X-Cache: MISS`, followed by `X-Cache: HIT`.
 
 ![Application logs showing a cache miss followed by a cache hit](docs/images/cache-hit-miss-logs.png)
+The video of demonstration of a request with my cachingProxy
+![video of tests](docs/images/captureflagCacheproxy.mp4)
 
 ## Tests
 
