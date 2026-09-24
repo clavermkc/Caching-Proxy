@@ -66,4 +66,8 @@ public class ProxyService {
         cacheRepository.save(newEntity);
         return responseDto;
     }
+
+    public void clear() {
+        cacheRepository.clear();
+    }
 }
