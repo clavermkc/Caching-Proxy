@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -42,5 +43,10 @@ public class ProxyController {
         return ResponseEntity.ok()
                 .headers(responseHeaders)
                 .body(proxyResponse.body());
+    }
+    @PostMapping("/internal/clear-cache")
+    public ResponseEntity<String> clearCache() {
+        proxyService.clear(); // Assure-toi d'avoir une méthode clear() dans ton repo
+        return ResponseEntity.ok("Cache cleared successfully");
     }
 }

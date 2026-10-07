@@ -1,0 +1,12 @@
+#!/bin/bash
+
+JAR_PATH="target/Caching_Proxy-0.0.1-SNAPSHOT.jar"
+
+# Si le JAR n'existe pas encore, on le compile automatiquement
+if [ ! -f "$JAR_PATH" ]; then
+    echo "Fichier JAR introuvable. Compilation en cours..."
+    ./mvnw clean package -DskipTests
+fi
+
+# On passe tous les arguments reçus en ligne de commande à Java
+java -jar "$JAR_PATH" "$@"
